@@ -62,3 +62,18 @@ def winner(board)
     end
   end
 end
+  if board.all? {|char| position_taken?(char) == false}
+    puts "Board empty"
+    false
+  elsif WIN_COMBINATIONS.any? do |win_combo|
+    if win_combo.all? {|slot| board[slot] == "X"}
+      win_combo
+    elsif win_combo.all? {|slot| board[slot] == "O"}
+      win_combo
+    end
+  end
+  else
+    puts "board not empty"
+    false
+  end
+end
